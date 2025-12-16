@@ -29,7 +29,7 @@ try:
                 continue
 
             if current_func:
-                if tokens[0] == "ItsOver":
+                if tokens[0] == "ItsOver": #mogged
                     current_func = None
                     skip = False
                 else:
@@ -41,21 +41,21 @@ try:
                     skip = False
                 continue
 
-            if tokens[0] == "var":
+            if tokens[0] == "var": #variables oooowowowooooo
                 typ = tokens[1]
                 name = tokens[2]
                 value = tokens[3]
 
-                if typ == "int":
+                if typ == "int": #i feel like einstein writing "int"
                     variables[name] = int(value)
-                elif typ == "str":
+                elif typ == "str": #same
                     variables[name] = value
                 else:
                     print("type error")
                     print("code = 1")
                     sys.exit(1)
 
-            elif tokens[0] == "print":
+            elif tokens[0] == "print": #no, its don't print ur screen
                 if len(tokens) != 2:
                     print("syntax error")
                     print("code = 1")
@@ -67,7 +67,7 @@ try:
                 else:
                     print(name)
 
-            elif tokens[0] == "if":
+            elif tokens[0] == "if": #comparative type shi
                 if len(tokens) != 4:
                     print("syntax error")
                     print("code = 1")
@@ -77,6 +77,10 @@ try:
 
                 left_val = variables[left] if left in variables else int(left)
                 right_val = variables[right] if right in variables else int(right)
+
+                ##########################
+                # WORST PART OF THE CODE #
+                ##########################
 
                 if op == "==":
                     result = left_val == right_val
@@ -97,6 +101,8 @@ try:
 
                 if not result:
                     skip = True
+                
+                #it ended ig
 
             elif tokens[0] == "func": #i feel like a genious rn
                 fname = tokens[1]
